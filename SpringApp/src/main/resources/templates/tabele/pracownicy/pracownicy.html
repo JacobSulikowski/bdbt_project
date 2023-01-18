@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales Manager Application</title>
+</head>
+<body>
+
+
+<div align="center">
+    <h1>Pracownicy</h1>
+    <a href="/main">Powróć do strony głownej</a>
+    <br/>
+    <a href="/nowy_pracownik">Dodaj nowego pracownika</a>
+    <br/><br/>
+    <table border = "1" cellpadding = "10"> <!-– border –
+        obramowanie, cellpadding – rozmiar komórki -->
+        <!-- Table header -->
+        <thead>
+        <tr> <!-- Table row -->
+            <th>ID_pracownika</th> <!–- Table column -->
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>PESEL</th>
+            <th>ID_operatora</th>
+            <th>ID_lokalu</th>
+            <th>Operacja</th>
+        </tr>
+        </thead>
+        <!-- Table body -->
+        <tbody>
+        <tr th:each = "pracownik : ${listPracownik}">
+            <td th:text = "${pracownik.idPracownika}">ID_pracownika</td>
+            <td th:text = "${pracownik.imie}">Imie</td>
+            <td th:text = "${pracownik.nazwisko}">Nazwisko</td>
+            <td th:text = "${pracownik.pesel}">PESEL</td>
+            <td th:text = "${pracownik.idOperatora}">ID_operatora</td>
+            <td th:text = "${pracownik.idLokalu}">ID_lokalu</td>
+            <td>
+                <a th:href="@{'/edit/' + ${pracownik.idPracownika}}">Edytuj</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${pracownik.idPracownika}}">Usuń</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

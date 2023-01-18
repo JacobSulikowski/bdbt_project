@@ -22,7 +22,8 @@ public class PracownicyDAO {
     public List<Pracownicy> list(){
         String sql = "SELECT * FROM \"Pracownicy\"";
 
-        List<Pracownicy> listPracownicy = jdbcTemplate.query(sql,BeanPropertyRowMapper.newInstance(Pracownicy.class));
+        List<Pracownicy> listPracownicy = jdbcTemplate.query(sql,
+                BeanPropertyRowMapper.newInstance(Pracownicy.class));
         return listPracownicy;
     }
     /* Insert – wstawianie nowego wiersza do bazy */

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales Manager Application</title>
+</head>
+<body>
+
+
+<div align="center">
+    <h1>Poczty</h1>
+    <a href="/main">Powróć do strony głownej</a>
+    <br/>
+    <a href="/nowa_poczta">Dodaj nową pocztę</a>
+    <br/><br/>
+    <table border = "1" cellpadding = "10"> <!-– border –
+        obramowanie, cellpadding – rozmiar komórki -->
+        <!-- Table header -->
+        <thead>
+        <tr> <!-- Table row -->
+            <th>Nr_poczty</th> <!–- Table column -->
+            <th>Kod_poczty</th>
+            <th>Miasto</th>
+            <th>Operacje</th>
+        </tr>
+        </thead>
+        <!-- Table body -->
+        <tbody>
+        <tr th:each = "poczta : ${listPoczty}">
+            <td th:text = "${poczta.nrPoczty}">Nr_poczty</td>
+            <td th:text = "${poczta.kodPoczty}">Kod_poczty</td>
+            <td th:text = "${poczta.poczta}">Poczta</td>
+            <td>
+                <a th:href="@{'/editPoczta/' + ${poczta.nrPoczty}}">Edytuj</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/deletePoczta/' + ${poczta.nrPoczty}}">Usuń</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

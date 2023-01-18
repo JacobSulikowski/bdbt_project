@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales Manager Application</title>
+</head>
+<body>
+
+
+<div align="center">
+    <h1>Lokale</h1>
+    <a href="/main">Powróć do strony głownej</a>
+    <br/>
+    <a href="/nowy_lokal">Dodaj nowy lokal</a>
+    <br/><br/>
+    <table border = "1" cellpadding = "10"> <!-– border –
+        obramowanie, cellpadding – rozmiar komórki -->
+        <!-- Table header -->
+        <thead>
+        <tr> <!-- Table row -->
+            <th>ID_lokalu</th> <!–- Table column -->
+            <th>ID_operatora</th>
+            <th>Nr_adresu</th>
+            <th>Operacje</th>
+        </tr>
+        </thead>
+        <!-- Table body -->
+        <tbody>
+        <tr th:each = "lokal : ${listLokal}">
+            <td th:text = "${lokal.idLokalu}">ID_loaklu</td>
+            <td th:text = "${lokal.idOperatora}">Kod_poczty</td>
+            <td th:text = "${lokal.nrAdresu}">Poczta</td>
+            <td>
+                <a th:href="@{'/editLokal/' + ${lokal.idLokalu}}">Edytuj</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/deleteLokal/' + ${lokal.idLokalu}}">Usuń</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

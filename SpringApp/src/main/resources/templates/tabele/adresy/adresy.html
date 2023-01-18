@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales Manager Application</title>
+</head>
+<body>
+
+
+<div align="center">
+    <h1>Adresy</h1>
+    <a href="/main">Powróć do strony głownej</a>
+    <br/>
+    <a href="/nowy_adres">Dodaj nowy adres</a>
+    <br/><br/>
+    <table border = "1" cellpadding = "10"> <!-– border –
+        obramowanie, cellpadding – rozmiar komórki -->
+        <!-- Table header -->
+        <thead>
+        <tr> <!-- Table row -->
+            <th>Nr_adresu</th> <!–- Table column -->
+            <th>Nazwa_ulicy</th>
+            <th>Nr_budynku</th>
+            <th>Nr_lokalu</th>
+            <th>Miasto</th>
+            <th>Nr_poczty</th>
+            <th>Operacje</th>
+        </tr>
+        </thead>
+        <!-- Table body -->
+        <tbody>
+        <tr th:each = "adres : ${listAdresy}">
+            <td th:text = "${adres.nrAdresu}">Nr_adresu</td>
+            <td th:text = "${adres.nazwaUlicy}">Nazwa_ulicy</td>
+            <td th:text = "${adres.nrBudynku}">Nr_budynku</td>
+            <td th:text = "${adres.nrLokalu}">Nr_lokalu</td>
+            <td th:text = "${adres.miasto}">Miasto</td>
+            <td th:text = "${adres.nrPoczty}">Nr_poczty</td>
+            <td>
+                <a th:href="@{'/editAdres/' + ${adres.nrAdresu}}">Edytuj</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/deleteAdres/' + ${adres.nrAdresu}}">Usuń</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

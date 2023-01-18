@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales Manager Application</title>
+</head>
+<body>
+
+
+<div align="center">
+    <h1>Usługi</h1>
+    <a href="/main">Powróć do strony głownej</a>
+    <br/>
+    <a href="/nowa_usluga">Dodaj nową usługę</a>
+    <br/><br/>
+    <table border = "1" cellpadding = "10"> <!-– border –
+        obramowanie, cellpadding – rozmiar komórki -->
+        <!-- Table header -->
+        <thead>
+        <tr> <!-- Table row -->
+            <th>ID_uslugi</th> <!–- Table column -->
+            <th>Nazwa</th>
+            <th>Opis</th>
+            <th>Cena</th>
+            <th>ID_operatora</th>
+            <th>Operacje</th>
+        </tr>
+        </thead>
+        <!-- Table body -->
+        <tbody>
+        <tr th:each = "usluga : ${listUsluga}">
+            <td th:text = "${usluga.idUslugi}">ID_uslugi</td>
+            <td th:text = "${usluga.nazwa}">Nazwa</td>
+            <td th:text = "${usluga.opis}">Opis</td>
+            <td th:text = "${usluga.cena}">Cena</td>
+            <td th:text = "${usluga.idOperatora}">ID_operatora</td>
+            <td>
+                <a th:href="@{'/editUsluga/' + ${usluga.idUslugi}}">Edytuj</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/deleteUsluga/' + ${usluga.idUslugi}}">Usuń</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

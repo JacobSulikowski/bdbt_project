@@ -10,7 +10,6 @@ public class Pracownicy {
     private int pesel;
 
     public Pracownicy(int id,int idOperatora,int idLokalu,String imie, String nazwisko, int pesel, float amount){
-        super();
         this.id = id;
         this.idOperatora = idOperatora;
         this.idLokalu = idLokalu;
