@@ -45,7 +45,7 @@
 			<artifactId>ojdbc11</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
-			<systemPath>C:/Users/plipi/Downloads/ojdbc11.jar</systemPath>
+			<systemPath>${project.basedir}/lib/ojdbc11.jar</systemPath>
 		</dependency>
 		<!--  Spring Security - start  -->
 		<dependency>

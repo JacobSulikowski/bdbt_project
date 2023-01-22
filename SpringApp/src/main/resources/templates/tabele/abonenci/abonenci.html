@@ -2,21 +2,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Sales Manager Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Abonenci</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
 
 
-<div align="center">
-    <h1>Abonenci</h1>
+
+
+
+
+<div class="container-fluid bg-primary text-light">
+    <div class="row" style="text-align: center;">
+        <div class="col my-auto" >
+
+        </div>
+        <div class="col-8" >
+            <h1>Abonenci</h1>
+        </div>
+        <div class="col my-auto">
+            <a class="nav-link text-light" href="/main">< Back</a>
+        </div>
+    </div>
+</div>
+    <div align="center">
     <a href="/main">Powróć do strony głownej</a>
     <br/>
     <a href="/nowy_abonent">Dodaj nowego abonenta</a>
     <br/><br/>
-    <table border = "1" cellpadding = "10"> <!-– border –
+    <table border = "1" cellpadding = "10" class="table"> <!-– border –
         obramowanie, cellpadding – rozmiar komórki -->
         <!-- Table header -->
-        <thead>
+        <thead class="thead-dark">
         <tr> <!-- Table row -->
             <th>ID_abonenta</th> <!–- Table column -->
             <th>Adres_email</th>
@@ -43,6 +62,8 @@
         </tbody>
     </table>
 </div>
-
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
