@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +31,7 @@ public class PracownicyDAO {
         return listPracownik;
     }
     /* Insert – wstawianie nowego wiersza do bazy */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void save(Pracownik pracownik) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("\"Pracownicy\"").usingColumns("\"Imie\"", "\"Nazwisko\"", "\"PESEL\"", "\"ID_operatora\"", "\"ID_lokalu\"");
@@ -43,7 +44,7 @@ public class PracownicyDAO {
         insertActor.execute(mapa);
     }
     /* Read – odczytywanie danych z bazy */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public Pracownik get(int idPracownika){
         Object[] args = {idPracownika};
         String sql = "SELECT * FROM \"Pracownicy\" WHERE \"ID_pracownika\" = " + args[0];
@@ -51,7 +52,7 @@ public class PracownicyDAO {
         return pracownik;
     }
     /* Update – aktualizacja danych */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void update(Pracownik pracownik) {
 
         String sql = "UPDATE \"Pracownicy\" SET \"Imie\"=:imie, \"Nazwisko\"=:nazwisko, \"PESEL\"=:pesel, \"ID_operatora\"=:idOperatora, \"ID_lokalu\"=:idLokalu WHERE \"ID_pracownika\"=:idPracownika";
@@ -60,7 +61,7 @@ public class PracownicyDAO {
         template.update(sql, param);
     }
     /* Delete – wybrany rekord z danym id */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void delete(int idPracownika) {
         String sql = "DELETE FROM \"Pracownicy\" WHERE \"ID_pracownika\" =?";
         jdbcTemplate.update(sql, idPracownika);

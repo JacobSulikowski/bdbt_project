@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,7 @@ public class LokaleDAO {
         return listLokal;
     }
     /* Insert – wstawianie nowego wiersza do bazy */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void save(Lokal lokal) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("\"Lokale\"").usingColumns("\"ID_lokalu\"", "\"ID_operatora\"", "\"Nr_adresu\"");
@@ -39,7 +40,7 @@ public class LokaleDAO {
         insertActor.execute(mapa);
     }
     /* Read – odczytywanie danych z bazy */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public Lokal get(int nrLokalu){
         Object[] args = {nrLokalu};
         String sql = "SELECT * FROM \"Lokale\" WHERE \"ID_lokalu\" = " + args[0];
@@ -47,7 +48,7 @@ public class LokaleDAO {
         return lokal;
     }
     /* Update – aktualizacja danych */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void update(Lokal lokal) {
 
         String sql = "UPDATE \"Lokale\" SET \"ID_operatora\"=:idOperatora, \"Nr_adresu\"=:nrAdresu WHERE \"ID_lokalu\"=:idLokalu";
@@ -56,7 +57,7 @@ public class LokaleDAO {
         template.update(sql, param);
     }
     /* Delete – wybrany rekord z danym id */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void delete(int nrLokalu) {
         String sql = "DELETE FROM \"Lokale\" WHERE \"ID_lokalu\" =?";
         jdbcTemplate.update(sql, nrLokalu);

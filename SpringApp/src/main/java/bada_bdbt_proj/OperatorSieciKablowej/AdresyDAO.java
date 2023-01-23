@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class AdresyDAO {
         return listAdresy;
     }
     /* Insert – wstawianie nowego wiersza do bazy */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void save(Adres adres) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("\"Adresy\"").usingColumns("\"Nr_adresu\"", "\"Nazwa_ulicy\"", "\"Nr_budynku\"", "\"Nr_lokalu\"", "\"Miasto\"", "\"Nr_poczty\"");
@@ -43,7 +44,7 @@ public class AdresyDAO {
         insertActor.execute(mapa);
     }
     /* Read – odczytywanie danych z bazy */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public Adres get(int nrAdresu){
         Object[] args = {nrAdresu};
         String sql = "SELECT * FROM \"Adresy\" WHERE \"Nr_adresu\" = " + args[0];
@@ -51,7 +52,7 @@ public class AdresyDAO {
         return adres;
     }
     /* Update – aktualizacja danych */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void update(Adres adres) {
 
         String sql = "UPDATE \"Adresy\" SET \"Nazwa_ulicy\"=:nazwaUlicy, \"Nr_budynku\"=:nrBudynku, \"Nr_lokalu\"=:nrLokalu, \"Miasto\"=:miasto, \"Nr_poczty\"=:nrPoczty WHERE \"Nr_adresu\"=:nrAdresu";
@@ -60,7 +61,7 @@ public class AdresyDAO {
         template.update(sql, param);
     }
     /* Delete – wybrany rekord z danym id */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void delete(int nrAdresu) {
         String sql = "DELETE FROM \"Adresy\" WHERE \"Nr_adresu\" =?";
         jdbcTemplate.update(sql, nrAdresu);

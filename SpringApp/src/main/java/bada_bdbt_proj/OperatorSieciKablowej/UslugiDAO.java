@@ -31,7 +31,7 @@ public class UslugiDAO {
         return listUsluga;
     }
     /* Insert – wstawianie nowego wiersza do bazy */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void save(Usluga usluga) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("\"Uslugi\"").usingColumns("\"ID_uslugi\"", "\"Nazwa\"", "\"Opis\"", "\"Cena\"", "\"ID_operatora\"");
@@ -44,7 +44,7 @@ public class UslugiDAO {
         insertActor.execute(mapa);
     }
     /* Read – odczytywanie danych z bazy */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public Usluga get(int idUslugi){
         Object[] args = {idUslugi};
         String sql = "SELECT * FROM \"Uslugi\" WHERE \"ID_uslugi\" = " + args[0];
@@ -52,7 +52,7 @@ public class UslugiDAO {
         return usluga;
     }
     /* Update – aktualizacja danych */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void update(Usluga usluga) {
 
         String sql = "UPDATE \"Uslugi\" SET \"Nazwa\"=:nazwa, \"Opis\"=:opis, \"Cena\"=:cena, \"ID_operatora\"=:idOperatora WHERE \"ID_uslugi\"=:idUslugi";
@@ -61,7 +61,7 @@ public class UslugiDAO {
         template.update(sql, param);
     }
     /* Delete – wybrany rekord z danym id */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void delete(int idUslugi) {
         String sql = "DELETE FROM \"Uslugi\" WHERE \"ID_uslugi\" =?";
         jdbcTemplate.update(sql, idUslugi);

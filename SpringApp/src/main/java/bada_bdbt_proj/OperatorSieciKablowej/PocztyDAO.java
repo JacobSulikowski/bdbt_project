@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class PocztyDAO {
         return listPoczty;
     }
     /* Insert – wstawianie nowego wiersza do bazy */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void save(Poczta poczta) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("\"Poczty\"").usingColumns("\"Nr_poczty\"", "\"Kod_poczty\"", "\"Poczta\"");
@@ -40,7 +41,7 @@ public class PocztyDAO {
         insertActor.execute(mapa);
     }
     /* Read – odczytywanie danych z bazy */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public Poczta get(int nrPoczty){
         Object[] args = {nrPoczty};
         String sql = "SELECT * FROM \"Poczty\" WHERE \"Nr_poczty\" = " + args[0];
@@ -48,7 +49,7 @@ public class PocztyDAO {
         return poczta;
     }
     /* Update – aktualizacja danych */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void update(Poczta poczta) {
 
         String sql = "UPDATE \"Poczty\" SET \"Kod_poczty\"=:kodPoczty, \"Poczta\"=:poczta WHERE \"Nr_poczty\"=:nrPoczty";
@@ -57,7 +58,7 @@ public class PocztyDAO {
         template.update(sql, param);
     }
     /* Delete – wybrany rekord z danym id */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void delete(int nrPoczty) {
         String sql = "DELETE FROM \"Poczty\" WHERE \"Nr_poczty\" =?";
         jdbcTemplate.update(sql, nrPoczty);

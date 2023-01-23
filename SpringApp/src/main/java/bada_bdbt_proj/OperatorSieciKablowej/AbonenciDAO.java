@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class AbonenciDAO {
         return listAbonent;
     }
     /* Insert – wstawianie nowego wiersza do bazy */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void save(Abonent abonent) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("\"Abonenci\"").usingColumns("\"ID_abonenta\"", "\"Adres_email\"", "\"Numer_telefonu\"", "\"ID_operatora\"", "\"Nr_adresu\"");
@@ -42,7 +43,7 @@ public class AbonenciDAO {
         insertActor.execute(mapa);
     }
     /* Read – odczytywanie danych z bazy */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public Abonent get(int idAbonenta){
         Object[] args = {idAbonenta};
         String sql = "SELECT * FROM \"Abonenci\" WHERE \"ID_abonenta\" = " + args[0];
@@ -50,7 +51,7 @@ public class AbonenciDAO {
         return abonent;
     }
     /* Update – aktualizacja danych */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void update(Abonent abonent) {
 
         String sql = "UPDATE \"Abonenci\" SET \"Adres_email\"=:adresEmail, \"Numer_telefonu\"=:numerTelefonu, \"ID_operatora\"=:idOperatora, \"Nr_adresu\"=:nrAdresu WHERE \"ID_abonenta\"=:idAbonenta";
@@ -59,7 +60,7 @@ public class AbonenciDAO {
         template.update(sql, param);
     }
     /* Delete – wybrany rekord z danym id */
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     public void delete(int idAbonenta) {
         String sql = "DELETE FROM \"Abonenci\" WHERE \"ID_abonenta\" =?";
         jdbcTemplate.update(sql, idAbonenta);
