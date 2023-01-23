@@ -102,12 +102,13 @@ public class AppController implements WebMvcConfigurer {
         model.addAttribute("listUsluga", listUsluga);
         return "tabele/uslugi/uslugi";
     }
-    @RequestMapping("/uslugi_l")
+    @RequestMapping("/uslugi_u")
     public String showUslugiLPage(Model model){
         List<Usluga> listUsluga = uslugiDAO.list();
         model.addAttribute("listUsluga", listUsluga);
-        return "tabele/uslugi/uslugi_l";
+        return "tabele/uslugi/uslugi_u";
     }
+
     @RequestMapping("/nowy_pracownik")
     public String showNewPracownikPage(Model model){
         Pracownik pracownik = new Pracownik();
@@ -139,6 +140,12 @@ public class AppController implements WebMvcConfigurer {
         Abonent abonent = new Abonent();
         model.addAttribute("abonent", abonent);
         return "tabele/abonenci/nowy_abonent";
+    }
+    @RequestMapping("/twoj_profil")
+    public String showNewProfilPage(Model model){
+        Abonent abonent = new Abonent();
+        model.addAttribute("abonent", abonent);
+        return "user/twoj_profil";
     }
     @RequestMapping("/nowa_usluga")
     public String showNewAUslugaPage(Model model){

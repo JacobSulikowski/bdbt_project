@@ -1,74 +1,95 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Main User Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Blue OSK</title>
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-
+  <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
 </head>
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-  <div class="container">
-    <a class="navbar-brand" href="/">Blue - Operator Sieci Kablowej</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive"
-            aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 font-italic" href="main">Blue OSK</a>
+  <div class="navbar-collapse collapse px-3">
+    <form class="form-inline">
+      <button class="btn btn-outline-light" onclick="location.href='/main_admin'" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house"
+             viewBox="0 0 16 16">
+          <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+        </svg>
+      </button>
+    </form>
 
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/index}">Strona Startowa</a>
-        </li>
-
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Strona Główna
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
-                  style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
-        </li>
-
-      </ul>
-    </div>
   </div>
+  <div class="navbar-collapse collapse">
+
+    <span style="color: white;" class="navbar-text ml-auto">Jesteś zalogowany jako <b>[[${#httpServletRequest.remoteUser}]]</b></span>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <form method="post" th:action="@{/index}">
+          <button class="btn btn-danger" type="submit" onclick="successfullyLogout()" value="Sign Out">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-box-arrow-up" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                    d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
+              <path fill-rule="evenodd"
+                    d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708l3-3z"/>
+            </svg>
+          </button>
+        </form>
+      </li>
+    </ul>
+  </div>
+
 </nav>
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="sidebar-sticky pt-4">
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item"><a class="nav-link" href="/twoj_profil">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-people feather" viewBox="0 0 16 16">
+              <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+            </svg>
+            Profil</a></li>
+          <li class="nav-item"><a class="nav-link" href="/uslugi_u">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-file-earmark-text feather" viewBox="0 0 16 16">
+              <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+              <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+            </svg>
+            Usługi</a></li>
+        </ul>
+      </div>
+    </nav>
 
-    <div class="col-md-10 mt-5">
-      <form method="post" th:action="@{/index}">
-        <div class="form-group">
-          <label style="font-size:30px" th:inline="text">Witaj <a
-                  style="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
-            na stronie głównej!</label>
-          <div style="font-size:20px">Jeśli chcesz się wylogować, kliknij przycisk "Wyloguj" poniżej.</div>
-        </div>
 
-        <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj
-        </button>
-      </form>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
       <br/>
-      <div style="font-size:20px">Dostęp do odpowiednich tabel możesz uzyskać w prawym bocznym menu.</div>
-    </div>
-    <div class="side-nav">
-      <ul>
-        <p>Tabele:</p>
-      </ul>
-      <ul>
-        <li><a href="/uslugi_l"><p>Usługi</p></a> </li>
-      </ul>
-    </div>
+      <div class="container">
+        <div class="col-md mx-auto" >
+          <div class="form-group">
+            <label style="font-size:30px" th:inline="text">Witaj <a
+                    style="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
+              na stronie głównej!</label>
+            <div style="font-size:20px">Jeśli chcesz się wylogować, kliknij przycisk "Wyloguj" w prawym
+              górnym rogu.
+            </div>
+          </div>
+          <div style="font-size:20px">Dostęp do odpowiednich opcji możesz uzyskać w lewym bocznym menu.
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </div>
+
+<!-- Navigation -->
 
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
