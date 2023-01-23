@@ -32,6 +32,7 @@ public class UslugiDAO {
     }
     /* Insert – wstawianie nowego wiersza do bazy */
 
+
     @RolesAllowed("ADMIN")
     public void save(Usluga usluga) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
