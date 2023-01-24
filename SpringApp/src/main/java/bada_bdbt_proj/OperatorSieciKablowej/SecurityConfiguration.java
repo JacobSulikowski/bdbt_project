@@ -30,6 +30,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "FROM \"Abonenci\""+
                         "WHERE \"Adres_email\"=?");
         auth.inMemoryAuthentication()
+                .withUser("user")
+                .password("user")
+                .roles("USER")
+                .and()
                 .withUser("admin")
                 .password("admin")
                 .roles("ADMIN");
