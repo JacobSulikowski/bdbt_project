@@ -10,9 +10,9 @@ public class Abonent {
     public Abonent(){
 
     }
-    public Abonent(int idAbonenta, String adresEMail, String numerTelefonu, int idOperatora, int nrAdresu) {
+    public Abonent(int idAbonenta, String adresEmail, String numerTelefonu, int idOperatora, int nrAdresu) {
         this.idAbonenta = idAbonenta;
-        this.adresEmail = adresEMail;
+        this.adresEmail = adresEmail;
         this.numerTelefonu = numerTelefonu;
         this.idOperatora = idOperatora;
         this.nrAdresu = nrAdresu;

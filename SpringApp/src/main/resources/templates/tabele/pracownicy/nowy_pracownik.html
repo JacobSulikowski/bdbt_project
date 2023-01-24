@@ -111,28 +111,28 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="nazwisko">Nazwisko</label>
-                                <input type="text" class="form-control" id="nazwisko" placeholder="" value="" required>
+                                <input type="text" class="form-control" th:field="*{nazwisko}" id="nazwisko" placeholder="" value="" required>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="idPracownika">Id Pracownika</label>
-                            <input type="text" class="form-control" id="idPracownika" placeholder="" value="" required>
+                            <input type="text" class="form-control" th:field="*{idPracownika}" id="idPracownika" placeholder="" value="">
                         </div>
 
                         <div class="mb-3">
                             <label for="pesel">PESEL</label>
-                            <input type="text" class="form-control" id="pesel" placeholder="" required>
+                            <input type="text" class="form-control" th:field="*{pesel}" id="pesel" placeholder="" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="idOperatora">Id Operatora</label>
-                            <input type="text" class="form-control" id="idOperatora" placeholder="" required>
+                            <input type="text" class="form-control" th:field="*{idOperatora}" id="idOperatora" placeholder="" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="idLokalu">Id Lokalu</label>
-                            <input type="text" class="form-control" id="idLokalu" placeholder="" required>
+                            <input type="text" class="form-control" th:field="*{idLokalu}" id="idLokalu" placeholder="" required>
                         </div>
                         <hr class="mb-4">
 
