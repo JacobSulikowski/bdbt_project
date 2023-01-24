@@ -43,15 +43,21 @@ public class AbonenciDAO {
         insertActor.execute(mapa);
     }
     /* Read – odczytywanie danych z bazy */
-    @RolesAllowed("ADMIN")
+//    @RolesAllowed("ADMIN")
     public Abonent get(int idAbonenta){
         Object[] args = {idAbonenta};
         String sql = "SELECT * FROM \"Abonenci\" WHERE \"ID_abonenta\" = " + args[0];
         Abonent abonent = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Abonent.class));
         return abonent;
     }
+    public Abonent get(String login){
+        Object[] args = {login};
+        String sql = "SELECT * FROM \"Abonenci\" WHERE \"Adres_email\" = " +"'" + args[0] +"'";
+        Abonent abonent = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Abonent.class));
+        return abonent;
+    }
     /* Update – aktualizacja danych */
-    @RolesAllowed("ADMIN")
+//    @RolesAllowed("ADMIN")
     public void update(Abonent abonent) {
 
         String sql = "UPDATE \"Abonenci\" SET \"Adres_email\"=:adresEmail, \"Numer_telefonu\"=:numerTelefonu, \"ID_operatora\"=:idOperatora, \"Nr_adresu\"=:nrAdresu WHERE \"ID_abonenta\"=:idAbonenta";
