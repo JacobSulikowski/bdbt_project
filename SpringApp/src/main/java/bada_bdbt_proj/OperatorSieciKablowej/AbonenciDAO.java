@@ -33,9 +33,9 @@ public class AbonenciDAO {
 //    @RolesAllowed("ADMIN")
     public void save(Abonent abonent) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("\"Abonenci\"").usingColumns("\"ID_abonenta\"", "\"Adres_email\"", "\"Numer_telefonu\"", "\"ID_operatora\"", "\"Nr_adresu\"");
+        insertActor.withTableName("\"Abonenci\"").usingColumns("\"Adres_email\"", "\"Numer_telefonu\"", "\"ID_operatora\"", "\"Nr_adresu\"");
         Map<String, String> mapa = new HashMap<>();
-        mapa.put("\"ID_abonenta\"", Integer.toString(abonent.getIdAbonenta()));
+//        mapa.put("\"ID_abonenta\"", Integer.toString(abonent.getIdAbonenta()));
         mapa.put("\"Adres_email\"", abonent.getAdresEmail());
         mapa.put("\"Numer_telefonu\"", abonent.getNumerTelefonu());
         mapa.put("\"ID_operatora\"", Integer.toString(abonent.getIdOperatora()));

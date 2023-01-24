@@ -36,9 +36,9 @@ public class UslugiDAO {
     @RolesAllowed("ADMIN")
     public void save(Usluga usluga) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("\"Uslugi\"").usingColumns("\"ID_uslugi\"", "\"Nazwa\"", "\"Opis\"", "\"Cena\"", "\"ID_operatora\"");
+        insertActor.withTableName("\"Uslugi\"").usingColumns("\"Nazwa\"", "\"Opis\"", "\"Cena\"", "\"ID_operatora\"");
         Map<String, String> mapa = new HashMap<>();
-        mapa.put("\"ID_uslugi\"", Integer.toString(usluga.getIdUslugi()));
+//        mapa.put("\"ID_uslugi\"", Integer.toString(usluga.getIdUslugi()));
         mapa.put("\"Nazwa\"", usluga.getNazwa());
         mapa.put("\"Opis\"", usluga.getOpis());
         mapa.put("\"Cena\"", usluga.getCena());

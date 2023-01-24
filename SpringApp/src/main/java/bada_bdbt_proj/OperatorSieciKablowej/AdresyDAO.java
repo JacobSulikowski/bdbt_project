@@ -33,9 +33,9 @@ public class AdresyDAO {
     @RolesAllowed("ADMIN")
     public void save(Adres adres) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("\"Adresy\"").usingColumns("\"Nr_adresu\"", "\"Nazwa_ulicy\"", "\"Nr_budynku\"", "\"Nr_lokalu\"", "\"Miasto\"", "\"Nr_poczty\"");
+        insertActor.withTableName("\"Adresy\"").usingColumns("\"Nazwa_ulicy\"", "\"Nr_budynku\"", "\"Nr_lokalu\"", "\"Miasto\"", "\"Nr_poczty\"");
         Map<String, String> mapa = new HashMap<>();
-        mapa.put("\"Nr_adresu\"", Integer.toString(adres.getNrAdresu()));
+//        mapa.put("\"Nr_adresu\"", Integer.toString(adres.getNrAdresu()));
         mapa.put("\"Nazwa_ulicy\"", adres.getNazwaUlicy());
         mapa.put("\"Nr_budynku\"", adres.getNrBudynku());
         mapa.put("\"Nr_lokalu\"", adres.getNrLokalu());

@@ -33,9 +33,9 @@ public class PocztyDAO {
     @RolesAllowed("ADMIN")
     public void save(Poczta poczta) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("\"Poczty\"").usingColumns("\"Nr_poczty\"", "\"Kod_poczty\"", "\"Poczta\"");
+        insertActor.withTableName("\"Poczty\"").usingColumns("\"Kod_poczty\"", "\"Poczta\"");
         Map<String, String> mapa = new HashMap<>();
-        mapa.put("\"Nr_poczty\"", Integer.toString(poczta.getNrPoczty()));
+//        mapa.put("\"Nr_poczty\"", Integer.toString(poczta.getNrPoczty()));
         mapa.put("\"Kod_poczty\"", poczta.getKodPoczty());
         mapa.put("\"Poczta\"", poczta.getPoczta());
         insertActor.execute(mapa);

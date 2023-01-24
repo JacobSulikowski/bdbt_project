@@ -32,9 +32,9 @@ public class LokaleDAO {
     @RolesAllowed("ADMIN")
     public void save(Lokal lokal) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("\"Lokale\"").usingColumns("\"ID_lokalu\"", "\"ID_operatora\"", "\"Nr_adresu\"");
+        insertActor.withTableName("\"Lokale\"").usingColumns("\"ID_operatora\"", "\"Nr_adresu\"");
         Map<String, String> mapa = new HashMap<>();
-        mapa.put("\"ID_lokalu\"", Integer.toString(lokal.getIdLokalu()));
+//        mapa.put("\"ID_lokalu\"", Integer.toString(lokal.getIdLokalu()));
         mapa.put("\"ID_operatora\"", Integer.toString(lokal.getIdOperatora()));
         mapa.put("\"Nr_adresu\"", Integer.toString(lokal.getNrAdresu()));
         insertActor.execute(mapa);
