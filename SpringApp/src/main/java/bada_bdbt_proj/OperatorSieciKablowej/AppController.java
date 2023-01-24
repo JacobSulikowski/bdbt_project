@@ -106,9 +106,11 @@ public class AppController implements WebMvcConfigurer {
         model.addAttribute("listUsluga", listUsluga);
         return "tabele/uslugi/uslugi";
     }
-    @RequestMapping("/uslugi_u")
-    public String showUslugiLPage(Model model){
+    @RequestMapping("/uslugi_u/{idAbonenta}")
+    public String showUslugiLPage(@PathVariable(name = "idAbonenta") int idAbonenta, Model model){
         List<Usluga> listUsluga = uslugiDAO.list();
+        Abonent abonent = abonenciDAO.get(idAbonenta);
+        model.addAttribute("abonent", abonent);
         model.addAttribute("listUsluga", listUsluga);
         return "tabele/uslugi/uslugi_u";
     }
