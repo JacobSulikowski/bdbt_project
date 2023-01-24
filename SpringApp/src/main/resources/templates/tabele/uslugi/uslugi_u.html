@@ -72,7 +72,7 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <br/>
 
-            <h2>Twoje Usługi</h2>
+            <h2>Dostępne Usługi</h2>
 
 
             <div class="table-responsive">
@@ -99,9 +99,7 @@
                         <td th:text="${usluga.cena}">Cena</td>
                         <td th:text="${usluga.idOperatora}">ID_operatora</td>
                         <td>
-                            <a th:href="@{'/editUsluga/' + ${usluga.idUslugi}}">Edytuj</a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a th:href="@{'/deleteUsluga/' + ${usluga.idUslugi}}">Usuń</a>
+                            <a class="btn btn-success" th:href="@{'/editUsluga/' + ${usluga.idUslugi}}">Zamów</a>
                         </td>
                     </tr>
                     </tbody>

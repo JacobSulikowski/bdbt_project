@@ -8,6 +8,10 @@ public class Adres {
     private String miasto;
     private int nrPoczty;
 
+
+    //TODO: Nie wpisywać klucza głównego tylko generować automatycznie.
+
+    //TODO: Nie wpisywać id operatora tylko wybierać z listy dostępnych
     public Adres(){
 
     }

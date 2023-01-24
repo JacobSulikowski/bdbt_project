@@ -73,27 +73,27 @@
             <br/>
 
             <div class="col px-5" >
-                <h4 class="mb-3">Twój Profil</h4>
-                <form method="post" th:object="${abonent}" th:action="@{/saveAbonent}" class="needs-validation">
+                <h2 class="mb-3">Twój Profil</h2>
+                <form method="post" th:object="${abonent}" th:action="@{/updateAbonent}" class="needs-validation">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="idAbonenta">Numer telefonu</label>
-                            <input type="text" class="form-control" id="idAbonenta" placeholder="" value="" required>
+                            <label for="nrTelefonu">Numer telefonu</label>
+                            <input type="text" class="form-control" th:field="*{numerTelefonu}" id="nrTelefonu" placeholder="" value="" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="" value="" required>
+                            <input type="email" class="form-control" th:field="*{adresEmail}" id="email" placeholder="" value="" required>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="idOperatora">Id Operatora</label>
-                        <input type="text" class="form-control" id="idOperatora" placeholder="" required>
+                        <input type="text" class="form-control" th:field="*{idOperatora}" id="idOperatora" placeholder="" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="nrAdresu">Numer adresu</label>
-                        <input type="text" class="form-control" id="nrAdresu" placeholder="" required>
+                        <input type="text" class="form-control" th:field="*{nrAdresu}" id="nrAdresu" placeholder="" required>
                     </div>
                     <hr class="mb-4">
 
