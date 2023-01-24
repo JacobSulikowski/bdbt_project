@@ -30,7 +30,7 @@ public class AbonenciDAO {
         return listAbonent;
     }
     /* Insert – wstawianie nowego wiersza do bazy */
-//    @RolesAllowed("ADMIN")
+    @RolesAllowed("ADMIN")
     public void save(Abonent abonent) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("\"Abonenci\"").usingColumns("\"ID_abonenta\"", "\"Adres_email\"", "\"Numer_telefonu\"", "\"ID_operatora\"", "\"Nr_adresu\"");
@@ -66,7 +66,7 @@ public class AbonenciDAO {
         template.update(sql, param);
     }
     /* Delete – wybrany rekord z danym id */
-//    @RolesAllowed("ADMIN")
+    @RolesAllowed("ADMIN")
     public void delete(int idAbonenta) {
         String sql = "DELETE FROM \"Abonenci\" WHERE \"ID_abonenta\" =?";
         jdbcTemplate.update(sql, idAbonenta);
