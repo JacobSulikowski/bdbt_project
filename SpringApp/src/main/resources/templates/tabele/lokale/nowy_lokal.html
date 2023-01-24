@@ -104,16 +104,16 @@
             <div class="col px-5" >
                 <h4 class="mb-3">Dodaj nowy lokal</h4>
                 <form method="post" th:object="${lokal}" th:action="@{/saveLokal}" class="needs-validation">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="idLokalu">Id lokalu</label>
-                            <input type="text" class="form-control" th:field="*{idLokalu}" id="idLokalu" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
+
+<!--                        <div class="col-md-6 mb-3">-->
+<!--                            <label for="idLokalu">Id lokalu</label>-->
+<!--                            <input type="text" class="form-control" th:field="*{idLokalu}" id="idLokalu" placeholder="" value="" required>-->
+<!--                        </div>-->
+                    <div class="mb-3">
                             <label for="idOperatora">Id operatora</label>
                             <input type="text" class="form-control" th:field="*{idOperatora}" id="idOperatora" placeholder="" value="" required>
-                        </div>
                     </div>
+
 
                     <div class="mb-3">
                         <label for="nrAdresu">Numer adresu</label>

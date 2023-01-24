@@ -104,17 +104,16 @@
             <div class="col px-5">
                 <h4 class="mb-3">Dodaj nową usługę</h4>
                 <form method="post" th:object="${usluga}" th:action="@{/saveUsluga}" class="needs-validation">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="idUslugi">Id usługi</label>
-                            <input type="text" class="form-control" th:field="*{idUslugi}" id="idUslugi" placeholder=""
-                                   value="" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
+<!--                        <div class="col-md-6 mb-3">-->
+<!--                            <label for="idUslugi">Id usługi</label>-->
+<!--                            <input type="text" class="form-control" th:field="*{idUslugi}" id="idUslugi" placeholder=""-->
+<!--                                   value="" required>-->
+<!--                        </div>-->
+                    <div class="mb-3">
                             <label for="nazwa">Nazwa</label>
                             <input type="text" class="form-control" th:field="*{nazwa}" id="nazwa" placeholder="" value="" required>
-                        </div>
                     </div>
+
 
                     <div class="mb-3">
                         <label for="opis">Opis</label>

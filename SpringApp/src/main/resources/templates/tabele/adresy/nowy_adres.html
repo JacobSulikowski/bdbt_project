@@ -104,16 +104,16 @@
             <div class="col px-5" >
                 <h4 class="mb-3">Dodaj nowy adres</h4>
                 <form method="post" th:object="${adres}" th:action="@{/saveAdres}" class="needs-validation">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="nrAdresu">Nr adresu</label>
-                            <input type="text" class="form-control" th:field="*{nrAdresu}" id="nrAdresu" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
+
+<!--                        <div class="col-md-6 mb-3">-->
+<!--                            <label for="nrAdresu">Nr adresu</label>-->
+<!--                            <input type="text" class="form-control" th:field="*{nrAdresu}" id="nrAdresu" placeholder="" value="" required>-->
+<!--                        </div>-->
+                    <div class="mb-3"">
                             <label for="nazwaUlicy">Nazwa ulicy</label>
                             <input type="text" class="form-control" th:field="*{nazwaUlicy}" id="nazwaUlicy" placeholder="" value="" required>
-                        </div>
                     </div>
+
 
                     <div class="mb-3">
                         <label for="nrBudynku">Numer budynku</label>

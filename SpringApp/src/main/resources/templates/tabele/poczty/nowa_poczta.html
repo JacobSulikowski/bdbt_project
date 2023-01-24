@@ -104,17 +104,17 @@
             <div class="col px-5">
                 <h4 class="mb-3">Dodaj nową pocztę</h4>
                 <form method="post" th:object="${poczta}" th:action="@{/savePoczta}" class="needs-validation">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="nrPoczty">Nr poczty</label>
-                            <input type="text" class="form-control" th:field="*{nrPoczty}" id="nrPoczty" placeholder="" value=""
-                                   required>
-                        </div>
-                        <div class="col-md-6 mb-3">
+
+<!--                        <div class="col-md-6 mb-3">-->
+<!--                            <label for="nrPoczty">Nr poczty</label>-->
+<!--                            <input type="text" class="form-control" th:field="*{nrPoczty}" id="nrPoczty" placeholder="" value=""-->
+<!--                                   required>-->
+<!--                        </div>-->
+                    <div class="mb-3">
                             <label for="kodPoczty">Kod poczty</label>
                             <input type="text" class="form-control" th:field="*{kodPoczty}" id="kodPoczty" placeholder="" value="" required>
-                        </div>
                     </div>
+
 
                     <div class="mb-3">
                         <label for="miasto">Miasto</label>

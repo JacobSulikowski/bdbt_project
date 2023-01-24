@@ -104,15 +104,13 @@
             <div class="col px-5" >
                 <h4 class="mb-3">Dodaj nowego abonenta</h4>
                 <form method="post" th:object="${abonent}" th:action="@{/saveAbonent}" class="needs-validation">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="idAbonenta">Id abonenta</label>
-                            <input type="text" class="form-control" th:field="*{idAbonenta}" id="idAbonenta" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
+<!--                        <div class="col-md-6 mb-3">-->
+<!--                            <label for="idAbonenta">Id abonenta</label>-->
+<!--                            <input type="text" class="form-control" th:field="*{idAbonenta}" id="idAbonenta" placeholder="" value="" required>-->
+<!--                        </div>-->
+                    <div class="mb-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" th:field="*{adresEmail}" id="email" placeholder="" value="" required>
-                        </div>
                     </div>
 
                     <div class="mb-3">
