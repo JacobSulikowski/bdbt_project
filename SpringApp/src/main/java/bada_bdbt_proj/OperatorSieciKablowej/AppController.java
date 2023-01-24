@@ -45,11 +45,12 @@ public class AppController implements WebMvcConfigurer {
     public class DashboardController {
         @RequestMapping("/main")
         public String defaultAfterLogin(HttpServletRequest request) {
+            String login = request.getRemoteUser();
             if (request.isUserInRole("ADMIN")) {
                 return "redirect:/main_admin";
             }
             else if (request.isUserInRole("USER")) {
-                return "redirect:/main_user";
+                return "redirect:/main_user/" + login;
             }
             else
             {
@@ -61,8 +62,11 @@ public class AppController implements WebMvcConfigurer {
     public String showAdminPage(Model model) {
         return "admin/main_admin";
     }
-    @RequestMapping(value={"/main_user"})
-    public String showUserPage(Model model) {
+    @RequestMapping(value={"/main_user/{login}"})
+    public String showUserPage(@PathVariable(name = "login") String login, Model model) {
+        List<Abonent> listAbonent = abonenciDAO.list();
+        Abonent abonent =  abonenciDAO.get(login);
+        model.addAttribute("abonent", abonent);
         return "user/main_user";
     }
 
@@ -141,9 +145,9 @@ public class AppController implements WebMvcConfigurer {
         model.addAttribute("abonent", abonent);
         return "tabele/abonenci/nowy_abonent";
     }
-    @RequestMapping("/twoj_profil")
-    public String showNewProfilPage(Model model){
-        Abonent abonent = new Abonent();
+    @RequestMapping("/twoj_profil/{idAbonenta}")
+    public String showNewProfilPage(@PathVariable(name = "idAbonenta") int idAbonenta, Model model){
+        Abonent abonent = abonenciDAO.get(idAbonenta);
         model.addAttribute("abonent", abonent);
         return "user/twoj_profil";
     }
@@ -268,9 +272,13 @@ public class AppController implements WebMvcConfigurer {
         return "redirect:/lokale";
     }
     @RequestMapping(value = "/updateAbonent", method = RequestMethod.POST)
-    public String update(@ModelAttribute("abonent") Abonent abonent){
+    public String update(@ModelAttribute("abonent") Abonent abonent, HttpServletRequest request){
         abonenciDAO.update(abonent);
-        return "redirect:/abonenci";
+        int id = abonent.getIdAbonenta();
+        if (request.isUserInRole("ADMIN")) {
+            return "redirect:/abonenci";
+        }
+        else return "redirect:/twoj_profil/" + id;
     }
     @RequestMapping(value = "/updateUsluga", method = RequestMethod.POST)
     public String update(@ModelAttribute("usluga") Usluga usluga){
