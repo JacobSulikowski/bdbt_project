@@ -9,7 +9,7 @@
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
     <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
 </head>
-<body class="bg-light">
+<body>
 
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
@@ -39,12 +39,9 @@
 
 </nav>
 
-
-
-
 <div class="container-fluid">
     <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="sidebar-sticky pt-4">
                 <h6 class="sidebar-heading d-flex align-items-center px-3 mb-1 text-muted"><span>TABELE</span></h6>
                 <ul class="nav flex-column mb-2">
@@ -114,9 +111,9 @@
                         <td th:text="${abonent.idOperatora}">ID_operatora</td>
                         <td th:text="${abonent.nrAdresu}">Nr_adresu</td>
                         <td>
-                            <a class="btn btn-warning" th:href="@{'/editAbonent/' + ${abonent.idAbonenta}}">Edytuj</a>
-                            &nbsp;&nbsp;
-                            <a class="btn btn-danger" th:href="@{'/deleteAbonent/' + ${abonent.idAbonenta}}">Usuń</a>
+                            <a th:href="@{'/editAbonent/' + ${abonent.idAbonenta}}">Edytuj</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a th:href="@{'/deleteAbonent/' + ${abonent.idAbonenta}}">Usuń</a>
                         </td>
                     </tr>
                     </tbody>

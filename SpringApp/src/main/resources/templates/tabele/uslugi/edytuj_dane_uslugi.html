@@ -2,149 +2,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Blue OSK</title>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-  <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
+  <title>Nowy pracownik</title>
 </head>
-<body class="bg-light">
-
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 font-italic" href="main">Blue OSK</a>
-  <div class="navbar-collapse collapse px-3">
-    <form class="form-inline">
-      <button class="btn btn-outline-light" onclick="location.href='/main_admin'" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house"
-             viewBox="0 0 16 16">
-          <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
-        </svg>
-      </button>
-    </form>
-
-  </div>
-  <div class="navbar-collapse collapse">
-
-    <span style="color: white;" class="navbar-text ml-auto">Jesteś zalogowany jako <b>[[${#httpServletRequest.remoteUser}]]</b></span>
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <form method="post" th:action="@{/index}">
-          <button class="btn btn-danger" type="submit" onclick="successfullyLogout()" value="Sign Out">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-box-arrow-up" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                    d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
-              <path fill-rule="evenodd"
-                    d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708l3-3z"/>
-            </svg>
-          </button>
-        </form>
-      </li>
-    </ul>
-  </div>
-
-</nav>
-
-<div class="container-fluid">
-  <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
-      <div class="sidebar-sticky pt-4">
-        <h6 class="sidebar-heading d-flex align-items-center px-3 mb-1 text-muted"><span>TABELE</span></h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item"><a class="nav-link" href="/pracownicy">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-person-vcard feather" viewBox="0 0 16 16">
-              <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"/>
-              <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z"/>
-            </svg>
-            Pracownicy</a></li>
-          <li class="nav-item"><a class="nav-link" href="/poczty">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-envelope feather" viewBox="0 0 16 16">
-              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
-            </svg>
-            Poczty</a></li>
-          <li class="nav-item"><a class="nav-link" href="/adresy">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-journal-text feather" viewBox="0 0 16 16">
-              <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
-              <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
-              <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
-            </svg>
-            Adresy</a></li>
-          <li class="nav-item"><a class="nav-link" href="/lokale">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-buildings feather" viewBox="0 0 16 16">
-              <path d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022ZM6 8.694 1 10.36V15h5V8.694ZM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15Z"/>
-              <path d="M2 11h1v1H2v-1Zm2 0h1v1H4v-1Zm-2 2h1v1H2v-1Zm2 0h1v1H4v-1Zm4-4h1v1H8V9Zm2 0h1v1h-1V9Zm-2 2h1v1H8v-1Zm2 0h1v1h-1v-1Zm2-2h1v1h-1V9Zm0 2h1v1h-1v-1ZM8 7h1v1H8V7Zm2 0h1v1h-1V7Zm2 0h1v1h-1V7ZM8 5h1v1H8V5Zm2 0h1v1h-1V5Zm2 0h1v1h-1V5Zm0-2h1v1h-1V3Z"/>
-            </svg>
-            Lokale</a></li>
-          <li class="nav-item"><a class="nav-link" href="/abonenci">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-people feather" viewBox="0 0 16 16">
-              <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
-            </svg>
-            Abonenci</a></li>
-          <li class="nav-item"><a class="nav-link active" href="/uslugi">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-file-earmark-text feather" viewBox="0 0 16 16">
-              <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
-              <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-            </svg>
-            Usługi</a></li>
-        </ul>
-      </div>
-    </nav>
-
-
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-      <br/>
-
-      <div class="col px-5">
-        <h4 class="mb-3">Edytuj usługę</h4>
-        <form method="post" th:object="${usluga}" th:action="@{/updateUsluga}" class="needs-validation">
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="idUslugi">Id usługi</label>
-              <input type="text" class="form-control" th:field="*{idUslugi}" id="idUslugi" placeholder=""
-                     value="" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="nazwa">Nazwa</label>
-              <input type="text" class="form-control" th:field="*{nazwa}" id="nazwa" placeholder="" value="" required>
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="opis">Opis</label>
-            <input type="text" class="form-control" th:field="*{opis}" id="opis" placeholder="" value="" required>
-          </div>
-
-          <div class="mb-3">
-            <label for="cena">Cena</label>
-            <input type="text" class="form-control" th:field="*{cena}" id="cena" placeholder="" required>
-          </div>
-
-          <div class="mb-3">
-            <label for="idOperatora">Id Operatora</label>
-            <input type="text" class="form-control" th:field="*{idOperatora}" id="idOperatora" placeholder="" required>
-          </div>
-          <hr class="mb-4">
-
-          <div class="mb-3" align="left">
-            <button type="submit" class="btn btn-success">Zapisz</button>
-          </div>
-        </form>
-      </div>
-    </main>
-  </div>
+<body>
+<div align="center">
+  <h1>Edytuj lokal</h1>
+  <br/>
+  <form action="#" th:action="@{/updateUsluga}" th:object="${usluga}" method="post">
+    <table border="1" cellpadding="10">
+      <tr>
+        <td>ID_uslugi</td>
+        <td><input type="text" th:field="*{idUslugi}" readonly="readonly"></td>
+      </tr>
+      <tr>
+        <td>Nazwa</td>
+        <td><input type="text" th:field="*{nazwa}"></td>
+      </tr>
+      <tr>
+        <td>Opis</td>
+        <td><input type="text" th:field="*{opis}"></td>
+      </tr>
+      <tr>
+        <td>Cena</td>
+        <td><input type="text" th:field="*{cena}"></td>
+      </tr>
+      <tr>
+        <td>ID_operatora</td>
+        <td><input type="text" th:field="*{idOperatora}"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="submit">Zapisz</button></td>
+      </tr>
+    </table>
+  </form>
 </div>
-
-
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
 </html>

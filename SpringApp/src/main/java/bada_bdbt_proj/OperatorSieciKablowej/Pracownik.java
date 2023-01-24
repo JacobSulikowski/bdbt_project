@@ -1,12 +1,12 @@
 package bada_bdbt_proj.OperatorSieciKablowej;
 
 public class Pracownik {
-    private int idPracownika = 1;
+    private int idPracownika;
     private String imie;
     private String nazwisko;
     private String pesel;
-    private int idOperatora = 1;
-    private int idLokalu = 1;
+    private int idOperatora;
+    private int idLokalu;
 
     public Pracownik(){
 

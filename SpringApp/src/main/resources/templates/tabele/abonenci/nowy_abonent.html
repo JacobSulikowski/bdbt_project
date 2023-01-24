@@ -9,7 +9,7 @@
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
     <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
 </head>
-<body class="bg-light">
+<body>
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 font-italic" href="main">Blue OSK</a>
@@ -48,7 +48,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="sidebar-sticky pt-4">
                 <h6 class="sidebar-heading d-flex align-items-center px-3 mb-1 text-muted"><span>TABELE</span></h6>
                 <ul class="nav flex-column mb-2">
@@ -107,27 +107,27 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="idAbonenta">Id abonenta</label>
-                            <input type="text" class="form-control" th:field="*{idAbonenta}" id="idAbonenta" placeholder="" value="" required>
+                            <input type="text" class="form-control" id="idAbonenta" placeholder="" value="" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" th:field="*{adresEmail}" id="email" placeholder="" value="" required>
+                            <input type="email" class="form-control" id="email" placeholder="" value="" required>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="nrTelefonu">Numer telefonu</label>
-                        <input type="text" class="form-control" th:field="*{numerTelefonu}" id="nrTelefonu" placeholder="" value="" required>
+                        <input type="text" class="form-control" id="nrTelefonu" placeholder="" value="" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="idOperatora">Id Operatora</label>
-                        <input type="text" class="form-control" th:field="*{idOperatora}" id="idOperatora" placeholder="" required>
+                        <input type="text" class="form-control" id="idOperatora" placeholder="" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="nrAdresu">Numer adresu</label>
-                        <input type="text" class="form-control" th:field="*{nrAdresu}" id="nrAdresu" placeholder="" required>
+                        <input type="text" class="form-control" id="nrAdresu" placeholder="" required>
                     </div>
                     <hr class="mb-4">
 

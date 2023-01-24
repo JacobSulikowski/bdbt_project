@@ -124,7 +124,7 @@
                         <th>PESEL</th>
                         <th>ID_operatora</th>
                         <th>ID_lokalu</th>
-                        <th>Operacje</th>
+                        <th>Operacja</th>
                     </tr>
                     </thead>
                     <!-- Table body -->
@@ -137,10 +137,9 @@
                         <td th:text="${pracownik.idOperatora}">ID_operatora</td>
                         <td th:text="${pracownik.idLokalu}">ID_lokalu</td>
                         <td>
-
-                            <a class="btn btn-warning" th:href="@{'/edit/' + ${pracownik.idPracownika}}">Edytuj</a>
-                            &nbsp;&nbsp;
-                            <a class="btn btn-danger" th:href="@{'/delete/' + ${pracownik.idPracownika}}">Usuń</a>
+                            <a th:href="@{'/edit/' + ${pracownik.idPracownika}}">Edytuj</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a th:href="@{'/delete/' + ${pracownik.idPracownika}}">Usuń</a>
                         </td>
                     </tr>
                     </tbody>

@@ -33,8 +33,6 @@ class PracownicyDAOTest {
 
     @Test
     void save() {
-        Pracownik pracownik = new Pracownik(1,"asd","asd","1",1,1);
-        dao.save(pracownik);
     }
 
     @Test

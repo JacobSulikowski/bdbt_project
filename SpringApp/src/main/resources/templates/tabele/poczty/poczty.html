@@ -9,7 +9,7 @@
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
     <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
 </head>
-<body class="bg-light">
+<body>
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 font-italic" href="main">Blue OSK</a>
@@ -45,7 +45,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="sidebar-sticky pt-4">
                 <h6 class="sidebar-heading d-flex align-items-center px-3 mb-1 text-muted"><span>TABELE</span></h6>
                 <ul class="nav flex-column mb-2">
@@ -128,10 +128,9 @@
                         <td th:text="${poczta.kodPoczty}">Kod_poczty</td>
                         <td th:text="${poczta.poczta}">Poczta</td>
                         <td>
-                            <a class="btn btn-warning" th:href="@{'/editPoczta/' + ${poczta.nrPoczty}}">Edytuj</a>
-                            &nbsp;&nbsp;
-                            <a class="btn btn-danger" th:href="@{'/deletePoczta/' + ${poczta.nrPoczty}}">Usuń</a>
-
+                            <a th:href="@{'/editPoczta/' + ${poczta.nrPoczty}}">Edytuj</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a th:href="@{'/deletePoczta/' + ${poczta.nrPoczty}}">Usuń</a>
                         </td>
                     </tr>
                     </tbody>

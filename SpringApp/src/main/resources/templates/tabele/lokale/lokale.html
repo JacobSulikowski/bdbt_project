@@ -9,7 +9,7 @@
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
     <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
 </head>
-<body class="bg-light">
+<body>
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 font-italic" href="main">Blue OSK</a>
@@ -40,7 +40,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="sidebar-sticky pt-4">
                 <h6 class="sidebar-heading d-flex align-items-center px-3 mb-1 text-muted"><span>TABELE</span></h6>
                 <ul class="nav flex-column mb-2">
@@ -101,13 +101,13 @@
                     <!-- Table body -->
                     <tbody>
                     <tr th:each = "lokal : ${listLokal}">
-                        <td th:text = "${lokal.idLokalu}">ID_lokalu</td>
+                        <td th:text = "${lokal.idLokalu}">ID_loaklu</td>
                         <td th:text = "${lokal.idOperatora}">Kod_poczty</td>
                         <td th:text = "${lokal.nrAdresu}">Poczta</td>
                         <td>
-                            <a class="btn btn-warning" th:href="@{'/editLokal/' + ${lokal.idLokalu}}">Edytuj</a>
-                            &nbsp;&nbsp;
-                            <a class="btn btn-danger" th:href="@{'/deleteLokal/' + ${lokal.idLokalu}}">Usuń</a>
+                            <a th:href="@{'/editLokal/' + ${lokal.idLokalu}}">Edytuj</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a th:href="@{'/deleteLokal/' + ${lokal.idLokalu}}">Usuń</a>
                         </td>
                     </tr>
                     </tbody>
