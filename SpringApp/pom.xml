@@ -11,7 +11,7 @@
 	<artifactId>SpringApplication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringApplication</name>
-	<description>Sample project in Spring Boot for BDBT and BADA.</description>
+	<description>Operatora Sieci Kablowej Blue</description>
 	<!--  PROPERTIES - START  -->
 	<properties>
 		<java.version>17</java.version>
